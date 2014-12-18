@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Malle</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+    <link href="build/prism-tomorrow.css" rel="stylesheet" />
+  </head>
+  <body>
+    <article>
+      <section>
+        <h2>Development & Deployment</h2>
+        <h1>Automation</h1>
+      </section>
+      <section>
+        <h1>Virtualization</h1>
+        <ul>
+          <li></li>
+          <li><h2>Vagrant</h2></li>
+          <li><h2>Ansible</h2></li>
+        </ul>
+      </section>
+      <section class='gif gif--boring'>
+        <h2>nicht schon wieder...</h2>
+      </section>
+      <section>
+        <h1>Build Systems</h1>
+      </section>
+      <section>
+        <h2>Ziel:</h2>
+        <ul>
+          <li></li>
+          <li><h3>one click builds</h3></li>
+        </ul>
+      </section>
+      <section class='gif gif--introducing'>
+        <h1>Introducing...</h1>
+      </section>
+      <section class='img img--gulp'>
+        <h1>gulp.js</h1>
+        <ul>
+          <li></li>
+          <li>The streaming build system * <span style="position:absolute;margin:200px 0 0 0;display:block;">* mehr dazu später</div></li>
+          <li>Simple, elegante API</li>
+          <li>Plugin basiert dadurch leichtgewichtiger Core</li>
+          <li><em>„Mache nur eine Sache und mache sie gut“</em></li>
+          <li>Asynchron *</li>
+          <li>und das beste...</li>
+        </ul>
+      </section>
+      <section class='gif gif--party-hard'>
+        <h1 style="color:#111;">reines Javascript</h1>
+      </section>
+      <section>
+        <h2>Streams? Keine Configfiles? Asynchron?</h2>
+      </section>
+      <section>
+        <h2>Setup</h2>
+        <ul>
+          <li></li>
+          <li><pre><code class="language-bash">$ npm install -g gulp</code></pre></li>
+          <li><pre><code class="language-bash">$ cd my-super-awesome-buzzword-riddled-project</code></pre></li>
+          <li><pre><code class="language-bash">$ touch gulpfile.js</code></pre></li>
+          <li><pre><code class="language-bash">$ gulp</code></pre></li>
+        </ul>
+      </section>
+      <section>
+        <h2>gulpfile.js Beispiel I</h2>
+        <pre><code class="language-javascript">//verschiebe html in build ordner
+gulp.task('html', function() {
+  return gulp.src('client/html/**/*.html')
+  .pipe(gulp.dest('build/client'));
+});
+</code></pre>
+      </section>
+      <section>
+        <h2>gulpfile.js Beispiel II</h2>
+        <pre><code class="language-javascript">//verschiebe html in build ordner
+gulp.task('html', function() {
+  return gulp.src('client/html/**/*.html')
+  .pipe(gulp.dest('build/client'));
+});
+
+// löscht den build ordner
+gulp.task('clean', function() {
+  return gulp.src('dist')
+    .pipe(rimraf()); //node module für 'rm -rf'
+});
+
+</code></pre>
+      </section>
+      <section>
+        <h2>Q: Welcher Task läuft zuerst?</h2>
+      </section>
+      <section>
+        <h2>A: Asynchron!</h2>
+      </section>
+      <section>
+        <h2>gulpfile.js Beispiel II</h2>
+        <pre><code class="language-javascript">//verschiebe html in build ordner
+gulp.task('html', function() {
+  return gulp.src('client/html/**/*.html')
+  .pipe(gulp.dest('build/client'));
+});
+
+// löscht den build ordner
+gulp.task('clean', function() {
+  return gulp.src('dist')
+    .pipe(rimraf()); //node module für 'rm -rf'
+});
+
+</code></pre>
+      </section>
+      <section>
+        <h2>gulpfile.js Beispiel II</h2>
+        <pre><code class="language-javascript">//verschiebe html in build ordner
+gulp.task('html',['clean'], function() {
+  return gulp.src('client/html/**/*.html')
+  .pipe(gulp.dest('build/client'));
+});
+
+// löscht den build ordner
+gulp.task('clean', function() {
+  return gulp.src('dist')
+    .pipe(rimraf()); //node module für 'rm -rf'
+});
+
+</code></pre>
+      </section>
+      <section>
+        <ul>
+          <li><h2>Triviale Beispiele sind blöd.</h2></li>
+          <li><h2>Zeig doch mal einen sinnvollen Task.</h2></li>
+          <li><h2>Irgendwas mit ecma6 nach ecma5. Achja und debuggen soll man das selbstverständlich auch noch können.</h2></li>
+      </section>
+      <section>
+        <h2>gulpfile.js Beispiel III</h2>
+        <pre><code class="language-javascript">
+gulp.task('clientJS6', [], function() {
+    return gulp.src('client/js6/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(traceur({modules:'commonjs', sourceMaps : true}))
+        .pipe(sourcemaps.write('../maps', { addComment : true } ))
+        .pipe(gulp.dest('build/client/js'));
+});
+
+</code></pre>
+      </section>
+      <section>
+        <h2>Sonstige Features</h2>
+        <ul>
+          <li></li>
+          <li>Watchdog auf Source-Dateien</li>
+          <li>974 Plugins (18.12.2014)</li>
+          <li>und übrigens...</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Diese Präsetation ist powered by Gulp.js</h2>
+      </section>
+      <section>
+        <h1>FIN</h1>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+    <script src="build/prism.js"></script>
+  </body>
+</html>
