@@ -85,7 +85,7 @@ gulp.task('html', function() {
 
 // löscht den build ordner
 gulp.task('clean', function() {
-  return gulp.src('dist')
+  return gulp.src('build/')
     .pipe(rimraf()); //node module für 'rm -rf'
 });
 
@@ -107,7 +107,7 @@ gulp.task('html', function() {
 
 // löscht den build ordner
 gulp.task('clean', function() {
-  return gulp.src('dist')
+  return gulp.src('build/')
     .pipe(rimraf()); //node module für 'rm -rf'
 });
 
@@ -123,7 +123,7 @@ gulp.task('html',['clean'], function() {
 
 // löscht den build ordner
 gulp.task('clean', function() {
-  return gulp.src('dist')
+  return gulp.src('build/')
     .pipe(rimraf()); //node module für 'rm -rf'
 });
 
@@ -133,7 +133,8 @@ gulp.task('clean', function() {
         <ul>
           <li><h2>Triviale Beispiele sind blöd.</h2></li>
           <li><h2>Zeig doch mal einen sinnvollen Task.</h2></li>
-          <li><h2>Irgendwas mit ecma6 nach ecma5. Achja und debuggen soll man das selbstverständlich auch noch können.</h2></li>
+          <li><h2>Irgendwas mit ecma6 nach ecma5.</h2></li>
+          <li><h2>Achja und debuggen soll man das selbstverständlich auch noch können.</h2></li>
       </section>
       <section>
         <h2>gulpfile.js Beispiel III</h2>
